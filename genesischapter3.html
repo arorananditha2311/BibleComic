@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Genesis 3 – Bible Comic</title>
+  <meta name="description" content="Read Genesis 3 in Bible Comic format – the story of the fall of Adam and Eve, temptation, and the beginning of sin told in a simple comic style.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .speech-bubble {
+      position: relative;
+      background: #fff;
+      border: 4px solid #000;
+      border-radius: 20px;
+      padding: 1rem 1.5rem;
+      font-weight: bold;
+      display: inline-block;
+      color: #000;
+    }
+    .speech-bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: 30px;
+      width: 0;
+      height: 0;
+      border: 20px solid transparent;
+      border-top-color: #fef9c3;
+      border-bottom: 0;
+      border-left: 0;
+      margin-left: -10px;
+      filter: drop-shadow(3px 3px 0px #000);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-yellow-400 via-red-500 to-blue-600 min-h-screen flex flex-col items-center justify-start text-white px-4 py-8">
+
+  <!-- Title -->
+  <div class="speech-bubble text-xl sm:text-2xl md:text-3xl mb-6 text-center">
+    📖 Genesis Chapter 3
+  </div>
+
+  <!-- Explanation -->
+  <div class="bg-white text-black border-4 border-black rounded-2xl shadow-xl p-6 max-w-3xl text-lg leading-relaxed">
+    <h2 class="text-2xl font-bold mb-4 text-center text-red-600">Simple Explanation</h2>
+    <p>
+      Genesis Chapter 3 tells the story of the Fall of Man. The serpent tempted Eve to eat from the tree of knowledge of good and evil, 
+      and she shared the fruit with Adam. Their eyes were opened to good and evil, and they realized they were naked. 
+      God confronted them, and as a consequence, humanity was expelled from the Garden of Eden. 
+      This chapter highlights the beginning of human sin, disobedience, and the need for redemption.
+    </p>
+  </div>
+
+  <!-- PDF Button -->
+  <a href="https://drive.google.com/file/d/1Y-9C0WN0P1vg6B6DLUtL4e_nob41PjHc/view?usp=drive_link" target="_blank" class="mt-8 bg-yellow-300 text-black px-6 py-3 rounded-2xl border-4 border-black font-bold shadow-lg hover:bg-yellow-400 transition">
+    📕 Read Comic PDF
+  </a>
+    <a href="genesischapter4.html" target="_blank" class="mt-8 bg-yellow-300 text-black px-6 py-3 rounded-2xl border-4 border-black font-bold shadow-lg hover:bg-yellow-400 transition">
+    📕 Continue Reading Genesis Chapter-4
+  </a>
+
+  <!-- Back Button -->
+    <a href="genesischapter2.html" class="mt-4 underline text-white hover:text-yellow-200">
+    ⬅ Back to Genesis Chapter 2
+  </a>
+  <a href="index.html#comics" class="mt-4 underline text-white hover:text-yellow-200">
+    ⬅ Back to Books
+  </a>
+
+</body>
+</html>

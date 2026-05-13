@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Bible Comic - Read the Word of God in Comics</title>
+        <meta name="description" content="Bible Comic brings you the Holy Bible in a fun and simple comic format. Read stories from Genesis and beyond with pictures, easy language, and spiritual lessons.">
+          <meta name="keywords" content="Bible comic, Genesis comic, Bible stories in pictures, Christian comics, Word of God, Holy Bible for kids, Bible learning">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Comic Speech Bubble */
+    .speech-bubble {
+      position: relative;
+      background: #fff;
+      border: 4px solid #000;
+      border-radius: 20px;
+      padding: 1rem 1.5rem;
+      font-weight: bold;
+      display: inline-block;
+      color: #000;
+    }
+    .speech-bubble:after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: 40px;
+      border-width: 20px 20px 0;
+      border-style: solid;
+      border-color: #fff transparent transparent transparent;
+    }
+    .speech-bubble:before {
+      content: "";
+      position: absolute;
+      bottom: -24px;
+      left: 37px;
+      border-width: 24px 24px 0;
+      border-style: solid;
+      border-color: #000 transparent transparent transparent;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-yellow-200 via-white to-purple-300 min-h-screen">
+
+  <!-- Navbar -->
+  <header class="sticky top-0 bg-red-600 text-white z-50 shadow-lg border-b-4 border-black">
+    <nav class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3 font-bold tracking-wide">
+      <h1 class="text-xl sm:text-2xl md:text-3xl drop-shadow-lg">📖 Daily Bible Comic</h1>
+      
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex space-x-6 text-lg">
+        <li><a href="#home" class="hover:text-yellow-300">Home</a></li>
+        <li><a href="#comics" class="hover:text-yellow-300">Comics</a></li>
+        <li><a href="#contact" class="hover:text-yellow-300">Contact Us</a></li>
+        <li><a href="#about" class="hover:text-yellow-300">About Us</a></li>
+      </ul>
+
+      <!-- Mobile Hamburger -->
+      <button id="menuBtn" class="md:hidden text-2xl">☰</button>
+    </nav>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobileMenu" class="hidden md:hidden bg-red-700 text-white px-4 py-3 space-y-3">
+      <a href="#home" class="block hover:text-yellow-300">Home</a>
+      <a href="#comics" class="block hover:text-yellow-300">Comics</a>
+      <a href="#contact" class="block hover:text-yellow-300">Contact Us</a>
+      <a href="#about" class="block hover:text-yellow-300">About Us</a>
+      <!-- <a href="#songs" class="block hover:text-yellow-300">Songs</a> -->
+    </div>
+  </header>
+
+  <script>
+  // Toggle Mobile Menu
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  });
+</script>
+
+
+  <!-- Hero Section -->
+  <section id="home" class="flex flex-col items-center text-center py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-r from-yellow-400 via-red-500 to-blue-600 text-white border-b-8 border-black">
+        <div style="margin-bottom: 55px;"class="speech-bubble animate-bounce bg-yellow-100 max-w-xs sm:max-w-md md:max-w-lg text-sm sm:text-base">
+      📖 Genesis Chapter 10 is out now!
+    </div>
+    <div class="speech-bubble animate-bounce bg-yellow-100 max-w-xs sm:max-w-md md:max-w-lg text-sm sm:text-base">
+      💬 One Chapter Every Day!
+    </div>
+    <h2 class="mt-6 text-3xl sm:text-5xl md:text-7xl font-extrabold drop-shadow-[4px_4px_0px_#000]">
+      From Genesis ➝ Revelation
+    </h2>
+    <p class="mt-3 text-lg sm:text-xl md:text-2xl font-semibold">
+      Experience the Bible in <span class="text-yellow-300">Comic Style</span>
+    </p>
+    <a href="#comics" class="mt-6 bg-yellow-300 text-black px-6 py-3 rounded-2xl border-4 border-black font-bold shadow-lg hover:bg-yellow-400 transition">
+      🚀 Start Reading
+    </a>
+  </section>
+
+  <!-- Comics Section -->
+  <section id="comics" class="max-w-6xl mx-auto py-20 px-6 ">
+  <h3 class="text-4xl font-extrabold text-center mb-12 text-red-600 drop-shadow-md">📚 Read Bible Comics</h3>
+
+  <!-- Search Bar for Books -->
+  <div class="max-w-lg mx-auto mb-10">
+    <input id="search" onkeyup="filterBooks()" 
+      type="text" placeholder="🔍 Search Genesis, Exodus, John..." 
+      class="w-full px-4 py-3 rounded-xl border-4 border-black shadow focus:outline-none">
+  </div>
+
+  <!-- Books List -->
+  <div id="bookGrid" class="space-y-6">
+
+    <!-- Genesis Book -->
+    <div class="book bg-white border-4 border-black rounded-2xl shadow-2xl overflow-hidden">
+      <button onclick="toggleBook('genesisChapters')" class="w-full text-left bg-blue-600 text-white font-bold text-lg px-4 py-3 border-b-4 border-black flex justify-between items-center">
+        Genesis <span class="text-yellow-300">▼</span>
+      </button>
+
+      <div id="genesisChapters" class="hidden p-6">
+        <!-- Search inside Genesis -->
+        <input onkeyup="filterChapters('genesisChapters', this.value)" 
+          type="text" placeholder="🔍 Search Genesis chapters..." 
+          class="w-full px-4 py-2 mb-6 rounded-xl border-2 border-black shadow focus:outline-none">
+        
+        <!-- ✅ Genesis Chapters (Grid container) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 chapter-list">
+          <div class="p-4 bg-yellow-100 border-2 border-black rounded-xl shadow hover:bg-yellow-200">
+            <a href="genesischapter1.html"><h4 class="font-bold">Genesis Chapter 1</h4></a>
+          </div>
+          <div class="p-4 bg-yellow-100 border-2 border-black rounded-xl shadow hover:bg-yellow-200">
+            <a href="genesischapter2.html"><h4 class="font-bold">Genesis Chapter 2</h4></a>
+          </div>
+          <div class="p-4 bg-yellow-100 border-2 border-black rounded-xl shadow hover:bg-yellow-200">
+            <a href="genesischapter3.html"><h4 class="font-bold">Genesis Chapter 3</h4></a>
+          </div>
+          <div class="p-4 bg-yellow-100 border-2 border-black rounded-xl shadow hover:bg-yellow-200">
+            <a href="genesischapter4.html"><h4 class="font-bold">Genesis Chapter 4</h4></a>
+          </div>
+          <div class="p-4 bg-yellow-100 border-2 border-black rounded-xl shadow hover:bg-yellow-200">
+            <a href="genesischapter5.html"><h4 class="font-bold">Genesis Chapter 5</h4></a>
+          </div>
+          <div class="p-4 bg-yellow-100 border-2 border-black rounded-xl shadow hover:bg-yellow-200">
+            <a href="genesischapter6.html"><h4 class="font-bold">Genesis Chapter 6</h4></a>
+          </div>
+          <div class="p-4 bg-yellow-100 border-2 border-black rounded-xl shadow hover:bg-yellow-200">
+            <a href="genesischapter7.html"><h4 class="font-bold">Genesis Chapter 7</h4></a>
+          </div>
+          <div class="p-4 bg-yellow-100 border-2 border-black rounded-xl shadow hover:bg-yellow-200">
+            <a href="genesischapter8.html"><h4 class="font-bold">Genesis Chapter 8</h4></a>
+          </div>
+          <div class="p-4 bg-yellow-100 border-2 border-black rounded-xl shadow hover:bg-yellow-200">
+            <a href="genesischapternine.html"><h4 class="font-bold">Genesis Chapter 9</h4></a>
+          </div>
+          <div class="p-4 bg-yellow-100 border-2 border-black rounded-xl shadow hover:bg-yellow-200">
+            <a href="genesischapter10.html"><h4 class="font-bold">Genesis Chapter 10</h4></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+  <script>
+  // Toggle visibility of book chapters
+  function toggleBook(chapterId) {
+    const el = document.getElementById(chapterId);
+    if (el.classList.contains('hidden')) {
+      el.classList.remove('hidden');
+    } else {
+      el.classList.add('hidden');
+    }
+  }
+
+  // Optional: Filter books by search input
+  function filterBooks() {
+    const input = document.getElementById('search').value.toLowerCase();
+    const books = document.querySelectorAll('#bookGrid .book');
+    books.forEach(book => {
+      const title = book.querySelector('button').innerText.toLowerCase();
+      book.style.display = title.includes(input) ? '' : 'none';
+    });
+  }
+
+  // Optional: Filter chapters inside a book
+  function filterChapters(chapterContainerId, query) {
+    const input = query.toLowerCase();
+    const chapters = document.querySelectorAll(`#${chapterContainerId} .chapter-list > div`);
+    chapters.forEach(ch => {
+      const title = ch.innerText.toLowerCase();
+      ch.style.display = title.includes(input) ? '' : 'none';
+    });
+  }
+</script>
+
+
+  <!-- Motivations -->
+  <!-- <section id="motivations" class="bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700 py-16 text-center text-white border-y-8 border-black">
+    <h3 class="text-4xl font-bold mb-6 drop-shadow-lg">💡 Daily Motivations</h3>
+    <p class="max-w-2xl mx-auto text-lg font-medium">
+      Be inspired with short, powerful Bible-based thoughts — presented in comic-bubble style.
+    </p>
+  </section> -->
+
+  <!-- Songs -->
+  <!-- <section id="songs" class="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 py-16 text-center text-black border-b-8 border-black">
+    <h3 class="text-4xl font-bold mb-6">🎶 Songs</h3>
+    <p class="max-w-2xl mx-auto text-lg font-medium mb-6">
+      Worship through uplifting music.
+    </p>
+  </section> -->
+
+  <!-- Contact Section -->
+<!-- Contact Section -->
+<!-- Contact Section -->
+<section id="contact" class="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 py-16 text-center text-white border-y-8 border-black">
+  <h3 class="text-4xl font-bold mb-6">📩 Contact Us</h3>
+  <p class="max-w-2xl mx-auto text-lg font-medium mb-8">
+    Have questions, feedback, or want to connect? Reach out to us below!
+  </p>
+
+  <form id="contactForm" class="max-w-xl mx-auto bg-white border-4 border-black rounded-2xl shadow-lg p-6 space-y-4 text-left" novalidate>
+    <!-- Name -->
+    <label for="name" class="block font-bold mb-1 text-black">Your Name</label>
+    <input id="name" name="name" type="text" placeholder="Enter your name"
+      class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400" />
+    <p class="text-red-700 text-sm font-semibold hidden" id="nameError">⚠️ Please enter your name.</p>
+
+    <!-- Email -->
+    <label for="email" class="block font-bold mb-1 text-black">Your Email</label>
+    <input id="email" name="email" type="email" placeholder="Enter your email"
+      class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400" />
+    <p class="text-red-700 text-sm font-semibold hidden" id="emailError">⚠️ Please enter a valid email address.</p>
+
+    <!-- Message -->
+    <label for="message" class="block font-bold mb-1 text-black">Your Message</label>
+    <textarea id="message" name="message" placeholder="Write your message..." rows="4"
+      class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400"></textarea>
+    <p class="text-red-700 text-sm font-semibold hidden" id="messageError">⚠️ Please enter your message.</p>
+
+    <!-- Submit -->
+    <button id="submitBtn" type="submit"
+      class="w-full bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-400 hover:from-yellow-400 hover:via-pink-400 hover:to-purple-500 text-white font-bold py-3 px-6 rounded-xl border-4 border-black shadow-md hover:bg-yellow-400 transition">
+      🚀 Send Message
+    </button>
+  <div class="max-w-xl mx-auto text-center mt-8">
+  <a href="view_messages.php" 
+     class="inline-block bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-400 hover:from-yellow-400 hover:via-pink-400 hover:to-purple-500 text-white font-bold px-6 py-3 rounded-2xl border-4 border-black shadow-lg hover:bg-blue-600 transition">
+    📬 View All Messages
+  </a>
+</div>
+
+  </form>
+<!-- Popup Modal -->
+ <div id="responseModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+  <div class="bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-500 rounded-3xl shadow-2xl border-4 border-yellow-300 max-w-md w-full p-6 text-center animate-pulse">
+    <p id="modalMessage" class="text-xl font-extrabold mb-6 text-white drop-shadow-lg"></p>
+    <button id="modalOkBtn" class="bg-yellow-400 hover:bg-yellow-300 text-black font-bold px-6 py-3 rounded-2xl border-4 border-black shadow-xl transition-transform transform hover:scale-105">
+      ✅ OK
+    </button>
+  </div>
+</div>
+
+
+
+  <!-- Response Message -->
+  <p id="formResponse" class="mt-4 text-lg font-bold"></p>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contactForm');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const messageInput = document.getElementById('message');
+  const nameError = document.getElementById('nameError');
+  const emailError = document.getElementById('emailError');
+  const messageError = document.getElementById('messageError');
+  const submitBtn = document.getElementById('submitBtn');
+
+  const modal = document.getElementById('responseModal');
+  const modalMessage = document.getElementById('modalMessage');
+  const modalOkBtn = document.getElementById('modalOkBtn');
+
+  // Hide specific error on typing
+  [nameInput, emailInput, messageInput].forEach(el => {
+    el.addEventListener('input', () => {
+      if(el === nameInput) nameError.classList.add('hidden');
+      if(el === emailInput) emailError.classList.add('hidden');
+      if(el === messageInput) messageError.classList.add('hidden');
+    });
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // reset
+    nameError.classList.add('hidden');
+    emailError.classList.add('hidden');
+    messageError.classList.add('hidden');
+
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const message = messageInput.value.trim();
+    let hasError = false;
+
+    if (!name) { nameError.classList.remove('hidden'); hasError = true; }
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email) { emailError.innerText = '⚠️ Please enter your email.'; emailError.classList.remove('hidden'); hasError = true; }
+    else if (!emailPattern.test(email)) { emailError.innerText = '⚠️ Please enter a valid email address.'; emailError.classList.remove('hidden'); hasError = true; }
+    if (!message) { messageError.classList.remove('hidden'); hasError = true; }
+
+    if (hasError) {
+      if (!nameError.classList.contains('hidden')) nameInput.focus();
+      else if (!emailError.classList.contains('hidden')) emailInput.focus();
+      else messageInput.focus();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.classList.add('opacity-60','cursor-not-allowed');
+
+    try {
+      const formData = new FormData(form);
+      const res = await fetch('contact.php', { method: 'POST', body: formData });
+      const text = await res.text();
+
+      // Show popup modal with message
+      modalMessage.innerText = text.startsWith('✅') ? '✅ Thank you, your message has been saved!' : `❌ ${text}`;
+      modal.classList.remove('hidden');
+
+      if (text.startsWith('✅')) form.reset();
+
+    } catch (err) {
+      modalMessage.innerText = '❌ Network error. Please try again.';
+      modal.classList.remove('hidden');
+      console.error(err);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('opacity-60','cursor-not-allowed');
+    }
+  });
+
+  // Close modal on OK button
+  modalOkBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+});
+</script>
+<!-- About Section -->
+<section id="about" class="py-16 text-center border-y-5 border-black bg-gradient-to-br from-yellow-200 via-white to-purple-300">
+  <h3 class="text-4xl font-bold mb-6 drop-shadow-lg text-red-600">🙌 About Us</h3>
+  <div class="max-w-3xl mx-auto bg-white border-4 border-black rounded-2xl shadow-2xl p-8 text-lg font-medium leading-relaxed space-y-4">
+    <p>
+      Welcome to <span class="font-bold text-red-600">Daily Bible Comic</span> — a place where the timeless 
+      Word of God is brought to life in a fun, simple, and visual way! 📖✨
+    </p>
+    <p>
+      Our mission is to help people of all ages understand and enjoy the 
+      <span class="text-purple-700 font-semibold">Holy Bible</span> through comics — 
+      making it easier to read, remember, and share God’s message.
+    </p>
+    <p>
+      We believe the Bible should be accessible and joyful to everyone, 
+      whether you’re a child learning your first stories or an adult revisiting 
+      God’s Word with a fresh perspective. 🌍❤️
+    </p>
+    <p class="font-bold text-blue-700">
+      One Chapter Every Day ➝ From Genesis to Revelation
+    </p>
+  </div>
+</section>
+
+<footer class="bg-gradient-to-r from-yellow-400 via-red-500 to-blue-600 text-white py-10 border-t-8 border-black text-center">
+  <div class="max-w-4xl mx-auto space-y-4">
+    <!-- Website Name -->
+    <h3 class="text-2xl font-bold drop-shadow-[3px_3px_0px_#000]">📖 Daily Bible Comic</h3>
+
+    <!-- Tagline -->
+    <p class="text-lg font-semibold">
+      Making God’s Word simple, fun, and unforgettable ✨
+    </p>
+
+    <!-- Links -->
+    <div class="flex flex-wrap justify-center gap-6 mt-4">
+      <a href="#home" class="bg-white text-black px-4 py-2 rounded-lg border-2 border-black font-bold hover:bg-yellow-200 transition">🏠 Home</a>
+      <a href="#about" class="bg-white text-black px-4 py-2 rounded-lg border-2 border-black font-bold hover:bg-yellow-200 transition">🙌 About</a>
+      <a href="#comics" class="bg-white text-black px-4 py-2 rounded-lg border-2 border-black font-bold hover:bg-yellow-200 transition">📚 Comics</a>
+      <a href="#contact" class="bg-white text-black px-4 py-2 rounded-lg border-2 border-black font-bold hover:bg-yellow-200 transition">✉ Contact</a>
+    </div>
+
+    <!-- Copyright -->
+    <p class="mt-6 text-sm font-bold bg-black text-white inline-block px-3 py-1 rounded-lg">
+      © 2025 Daily Bible Comic. All Rights Reserved.
+    </p>
+  </div>
+</footer>
+
+
+</body>
+</html>
